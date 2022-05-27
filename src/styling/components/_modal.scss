@@ -13,8 +13,7 @@
 
     // Modal content styling
     .modal {
-        display: flex;
-        flex-direction: column;
+        @include mixins.flex(column, center, flex-end, 0px);
         opacity: 1;
         background-color: #1b1a1a;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -40,9 +39,7 @@
         }
 
         .modal-content {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            @include mixins.flex(column, center, flex-start, 40px);
             text-align: left;
             padding: 10px 20px;
             color: #fff;
@@ -54,10 +51,7 @@
         }
 
         .modal-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
+            @include mixins.flex(column, flex-start, flex-start, 0px);
             width: 100%;
 
             @include mixins.tablet-and-up {
@@ -100,9 +94,7 @@
         }
 
         .modal-header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            @include mixins.flex(column, flex-end, center, 0px);
             font-size: 1.7rem;
             font-weight: 600;
             padding: 0px 10px;
@@ -124,18 +116,11 @@
         }
 
         .button-box {
-            display: flex;
-            flex-direction: row;
+            @include mixins.flex(row, flex-start, center, 20px);
             padding: 30px 0px;
-            gap: 20px;
-            justify-content: flex-start;
-            align-items: center;
             width: 100%;
 
             button {
-                padding: 15px 14px;
-                font-size: 0.9rem;
-                font-weight: 500;
                 display: flex;
                 gap: 10px;
                 border: none;

@@ -22,4 +22,20 @@
 }
 
 // Button styling
-@mixin btn($radius: 5px, $fontsize: 1rem) {}
+@mixin btn($radius: 4px, $fontsize: 0.85rem) {
+    border-radius: $radius;
+    font-size: $fontsize;
+    padding: 10px;
+    background-color: #FFDCB7;
+    border: 1px solid #252525;
+    font-weight: 500;
+    border-radius: 4px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #252525;
+        border: 1px solid #FFDCB7;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+}

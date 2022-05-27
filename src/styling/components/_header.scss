@@ -46,11 +46,11 @@ header {
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 5px;
-        border: 1px solid #dfdfdf;
+        border: 1px solid #FFDCB7;
         color: #fff;
         border-radius: 2px;
         margin-left: 1rem;
-        padding: 10px 30px 10px 10px;
+        padding: 7px 30px 7px 10px;
         font-size: 1rem;
         cursor: pointer;
     }
@@ -72,7 +72,7 @@ header {
         @include mixins.flex(column, center, flex-start, 10px);
 
         @include mixins.tablet-and-up {
-            @include mixins.flex(row, center, center, 40px);
+            @include mixins.flex(row, center, center, 10px);
         }
     }
 
@@ -80,7 +80,7 @@ header {
         padding: 8px;
         width: 300px;
         border-radius: 2px;
-        border: 1px solid #dfdfdf;
+        border: 1px solid #FFDCB7;
         color: #fff;
         font-size: 1rem;
         background: transparent;

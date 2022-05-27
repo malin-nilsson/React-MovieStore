@@ -32,8 +32,9 @@
 
 
     @include mixins.tablet-and-up {
-        @include mixins.flex(column, center, flex-start, 0px);
+        @include mixins.flex(column, space-between, flex-start, 0px);
         width: 40%;
+        height: 450px;
         margin: 10px 0px;
 
     }
@@ -113,18 +114,5 @@
 }
 
 button {
-    padding: 10px;
-    background-color: #FFDCB7;
-    border: 1px solid #252525;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border-radius: 4px;
-
-    &:hover {
-        cursor: pointer;
-        background-color: #252525;
-        border: 1px solid #FFDCB7;
-        color: #fff;
-        transition: all 0.3s ease-in-out;
-    }
+    @include mixins.btn();
 }
