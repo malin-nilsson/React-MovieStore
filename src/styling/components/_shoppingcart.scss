@@ -86,6 +86,14 @@
         width: 100%;
         border-top: 2px solid #FFDCB7;
         padding: 20px 0px 0px;
+
+        @include mixins.tablet-and-up {
+            @include mixins.flex(column, space-between, flex-start, 10px);
+        }
+
+        @include mixins.desktop-and-up {
+            @include mixins.flex(row, space-between, center, 0px);
+        }
     }
 
     .total {

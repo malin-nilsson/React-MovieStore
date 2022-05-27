@@ -9,16 +9,21 @@ header {
 
 .header-box {
     @include mixins.flex(column, flex-start, flex-start, 25px);
-    padding: 20px;
+    padding: 0px;
 
     @include mixins.tablet-and-up {
         padding: 30px 50px;
         position: fixed;
+        padding: 20px;
     }
 
     .header-row {
-        @include mixins.flex(row, center, center, 40px);
+        @include mixins.flex(column, center, flex-start, 10px);
+        padding: 10px;
 
+        @include mixins.tablet-and-up {
+            @include mixins.flex(row, center, center, 40px);
+        }
     }
 
     h1 {
@@ -64,7 +69,11 @@ header {
     }
 
     .header-content {
-        @include mixins.flex(row, center, center, 10px);
+        @include mixins.flex(column, center, flex-start, 10px);
+
+        @include mixins.tablet-and-up {
+            @include mixins.flex(row, center, center, 40px);
+        }
     }
 
     .search-box {

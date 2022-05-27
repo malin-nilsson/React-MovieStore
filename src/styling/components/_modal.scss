@@ -1,3 +1,5 @@
+@use "../core/mixins";
+
 // Modal container styling
 .modal-container {
     display: block;
@@ -22,19 +24,33 @@
         border-radius: 7px;
         margin: 40px auto;
         padding: 15px 10px;
-        width: 50%;
+        width: 90%;
         -webkit-animation-name: animatemodal;
         -webkit-animation-duration: 0.25s;
         animation-name: animatemodal;
         animation-duration: 0.25s;
 
+        @include mixins.tablet-and-up {
+            width: 70%;
+            margin: 60px auto;
+        }
+
+        @include mixins.desktop-and-up {
+            width: 50%;
+        }
+
         .modal-content {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 40px;
             text-align: left;
-            padding: 20px 40px;
+            padding: 10px 20px;
             color: #fff;
+
+            @include mixins.tablet-and-up {
+                flex-direction: row;
+                padding: 20px 40px;
+            }
         }
 
         .modal-info {
@@ -42,7 +58,11 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            width: 50%;
+            width: 100%;
+
+            @include mixins.tablet-and-up {
+                width: 50%;
+            }
 
             h4 {
                 font-size: 1.6rem;
@@ -67,7 +87,11 @@
         }
 
         .modal-image {
-            width: 50%;
+            width: 100%;
+
+            @include mixins.tablet-and-up {
+                width: 50%;
+            }
         }
 
         .modal-image img {

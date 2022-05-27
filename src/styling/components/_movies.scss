@@ -3,6 +3,7 @@
 .movie-box {
     @include mixins.flex(column, space-around, flex-start, 0px);
     width: 95%;
+    margin: 0 auto;
 
     @include mixins.tablet-and-up {
         @include mixins.flex(row, space-around, flex-start, 0px);
@@ -22,6 +23,7 @@
     margin: 20px auto;
     border-radius: 5px;
     background-color: #252525;
+    padding: 10px;
 
     &:hover {
         transform: scale(1.05);
@@ -32,15 +34,15 @@
     @include mixins.tablet-and-up {
         @include mixins.flex(column, center, flex-start, 0px);
         width: 40%;
-        padding: 10px;
         margin: 10px 0px;
-        height: 390px;
+
     }
 
     @include mixins.desktop-and-up {
         @include mixins.flex(column, space-between, flex-start, 0px);
         width: 20%;
         margin: 15px 0px;
+        height: 380px;
     }
 
     &:hover {
@@ -52,16 +54,25 @@
         border: none;
         cursor: pointer;
         padding: 0;
-    }
 
-    img {
-        width: 100%;
-        height: 270px;
-        opacity: 1;
-        transition: all 0.2s ease-in-out;
 
-        &:hover {
-            opacity: 0.7;
+        img {
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            @include mixins.tablet-and-up {
+                height: auto;
+            }
+
+            @include mixins.desktop-and-up {
+                // height: 270px;
+            }
         }
     }
 
