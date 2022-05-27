@@ -60,17 +60,17 @@ export default function Movies(props: IMoviesProps) {
     /* Add movie to shopping cart */
     ////////////////////////////////
     const addMovieToCart = (movie: IMovie) => {
-        let movieExists = false;
+        let movieAlreadyInCart = false;
         let tempCart = [...cart];
 
         for (let i = 0; i < cart.length; i++) {
             if (cart[i].productId === movie.id) {
-                movieExists = true;
+                movieAlreadyInCart = true;
                 tempCart[i].productAmount++;
             }
         }
 
-        if (!movieExists) {
+        if (!movieAlreadyInCart) {
             setCart([...cart, {
                 productId: movie.id,
                 productName: movie.name,
