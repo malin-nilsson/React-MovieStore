@@ -1,0 +1,85 @@
+@use "../core/mixins";
+
+header {
+    background-color: #1a1919;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.header-box {
+    @include mixins.flex(column, flex-start, flex-start, 25px);
+    padding: 20px;
+
+    @include mixins.tablet-and-up {
+        padding: 30px 50px;
+        position: fixed;
+    }
+
+    .header-row {
+        @include mixins.flex(row, center, center, 40px);
+
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 900;
+
+        color: #fff;
+    }
+
+    h3 {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='30' viewBox='0 0 24 24' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 5px;
+        border: 1px solid #dfdfdf;
+        color: #fff;
+        border-radius: 2px;
+        margin-left: 1rem;
+        padding: 10px 30px 10px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    option {
+        background: transparent;
+        color: #000;
+    }
+
+    .logo-color {
+        color: #FFDCB7;
+    }
+
+    svg:hover {
+        cursor: pointer;
+    }
+
+    .header-content {
+        @include mixins.flex(row, center, center, 10px);
+    }
+
+    .search-box {
+        padding: 8px;
+        width: 300px;
+        border-radius: 2px;
+        border: 1px solid #dfdfdf;
+        color: #fff;
+        font-size: 1rem;
+        background: transparent;
+
+        &:focus {
+            outline: none;
+            border: none;
+            box-shadow: 0 0 7px 2px #554d4d;
+        }
+    }
+}

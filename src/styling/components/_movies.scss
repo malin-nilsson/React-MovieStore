@@ -1,0 +1,119 @@
+@use "../core/mixins";
+
+.movie-box {
+    @include mixins.flex(column, space-around, flex-start, 0px);
+    width: 95%;
+
+    @include mixins.tablet-and-up {
+        @include mixins.flex(row, space-around, flex-start, 0px);
+        flex-wrap: wrap;
+        width: 70%;
+    }
+
+    @include mixins.desktop-and-up {
+        @include mixins.flex(row, space-between, flex-start, 0px);
+    }
+
+}
+
+.movie {
+    @include mixins.flex(column, space-between, flex-start, 0px);
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 5px;
+    background-color: #252525;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: all .3s;
+    }
+
+
+    @include mixins.tablet-and-up {
+        @include mixins.flex(column, center, flex-start, 0px);
+        width: 40%;
+        padding: 10px;
+        margin: 10px 0px;
+        height: 390px;
+    }
+
+    @include mixins.desktop-and-up {
+        @include mixins.flex(column, space-between, flex-start, 0px);
+        width: 20%;
+        margin: 15px 0px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .movie-image {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    img {
+        width: 100%;
+        height: 270px;
+        opacity: 1;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+}
+
+.movie-info {
+    @include mixins.flex(column, center, flex-start, 10px);
+    width: 100%;
+    padding: 10px 0px 15px;
+
+    @include mixins.tablet-and-up {
+        @include mixins.flex(column, center, flex-start, 15px);
+    }
+
+    .movie-title {
+        font-weight: 500;
+        font-size: 0.95rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        max-height: 35px;
+        /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+
+    .movie-price {
+        @include mixins.flex(row, space-between, center, 0px);
+        width: 100%;
+    }
+
+    span {
+        display: block;
+        font-size: 0.9rem;
+        padding: 5px;
+        margin: 0px;
+    }
+}
+
+button {
+    padding: 10px;
+    background-color: #FFDCB7;
+    border: 1px solid #252525;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 4px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #252525;
+        border: 1px solid #FFDCB7;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+}

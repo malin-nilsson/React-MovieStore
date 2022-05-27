@@ -1,0 +1,14 @@
+@use "../core/mixins";
+
+.main-content {
+    @include mixins.flex(column, center, flex-start, 0px);
+    padding: 0px 0px 40px;
+
+    @include mixins.tablet-and-up {
+        @include mixins.flex(row, center, flex-start, 0px);
+        color: #fff;
+        padding: 230px 20px 70px;
+    }
+
+
+}
