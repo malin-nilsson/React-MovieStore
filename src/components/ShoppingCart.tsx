@@ -1,6 +1,8 @@
 import { ICart } from "../models/ICart";
 import minus from "../assets/minus-solid.png";
 import plus from "../assets/plus-solid.png";
+import { useState } from "react";
+import Checkout from "./Checkout";
 
 interface ICartProps {
     cart: ICart[];
@@ -11,6 +13,9 @@ interface ICartProps {
 }
 
 export default function ShoppingCart(props: ICartProps) {
+
+    const [checkout, setCheckout] = useState(false);
+
     /* Remove item */
     const removeItem = (id: number) => {
         let index = props.cart.findIndex((item) => item.productId === id);
@@ -25,6 +30,10 @@ export default function ShoppingCart(props: ICartProps) {
     /* Decrease item */
     const decreaseItem = (id: number) => {
         props.decreaseQuantity(id)
+    }
+
+    const toggleCheckout = () => {
+        setCheckout(checkout => !checkout);
     }
 
 
@@ -85,12 +94,18 @@ export default function ShoppingCart(props: ICartProps) {
                     </div>
 
                     { /* Shopping cart total */}
-                    <div className="shopping-cart-total">
-                        <span className="total">Total:</span>
-                        <span>{props.sum} SEK</span>
-                        <button>Continue</button>
+                    <div className="shopping-cart-footer">
+                        <div className="shopping-cart-total">
+                            <span className="total">Total: {props.sum} SEK</span>
+                        </div>
+                        <div className="shopping-cart-continue">
+                            <button
+                                onClick={() => { toggleCheckout() }}>Continue to checkout</button>
+                        </div>
                     </div>
                 </div>
+
+                {checkout ? <Checkout /> : ""}
             </section>
         </>
     } else {

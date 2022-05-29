@@ -10,13 +10,6 @@ export default function MovieStore() {
     const [results, setResults] = useState<IMovie[]>([]);
     const [loader, setLoader] = useState(true);
 
-    let loaderHTML = (
-        <div className="loader-container">
-            <p className="loader-text">Loading movie store...</p>
-            <div className="loader"></div>
-        </div>
-    );
-
     useEffect(() => {
         if (results.length !== 0) return;
         axios.get(baseURL)
@@ -27,9 +20,17 @@ export default function MovieStore() {
             })
     });
 
+    let loaderHTML = (
+        <div className="loader-container">
+            <div className="loader"></div>
+            <p className="loader-text">Loading movie store...</p>
+        </div>
+    );
+
     if (loader) {
         return loaderHTML
     }
+
 
     const searchResults = (input: string) => {
         let titlesFromAPI = []
@@ -39,16 +40,26 @@ export default function MovieStore() {
         }
 
         let searchResult = titlesFromAPI.filter((movie) => movie === input)
-
         const test = titlesFromAPI.filter((movie) => movie.startsWith(input));
-
         console.log(test)
-        return searchResult;
+        console.log(searchResult)
+    }
+
+    const displayCategory = (categoryId: number) => {
+        if (categoryId === 1) {
+            let temp = [...results];
+            setResults(temp)
+            console.log(temp)
+        }
+        let moviesFromCategory = results.filter((movie) => movie.productCategory[0].categoryId === categoryId);
+        setResults(moviesFromCategory)
+        console.log(moviesFromCategory)
     }
 
     return (
         <>
-            <Header movieSearch={searchResults} movies={results} />
+            <Header movieSearch={searchResults} movies={results}
+                getCategory={displayCategory} />
             <Movies movies={results} />
         </>
     )

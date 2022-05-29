@@ -3,15 +3,23 @@ import { IMovie } from '../models/IMovie';
 
 interface IHeaderProps {
     movieSearch: (input: string) => void;
+    getCategory: (input: number) => void;
     movies: IMovie[];
 }
 
 export default function Header(props: IHeaderProps) {
     const [input, setInput] = useState("");
+    const [select, setSelect] = useState("");
 
     const searchTitle = () => {
         let titleInUppercase = input.toUpperCase();
         props.movieSearch(titleInUppercase)
+    }
+
+    const getCategory = (value: string) => {
+        setSelect(value)
+        let categorynumber = parseInt(value);
+        props.getCategory(categorynumber)
     }
 
     return (
@@ -21,7 +29,7 @@ export default function Header(props: IHeaderProps) {
                     <div className="header-logo">
                         <h1><span className="logo-color">Movie </span>Shop.</h1>
                     </div>
-                    <div className="header-content">
+                    <div className="header-search">
                         <input type="text"
                             placeholder="Search movie..."
                             className="search-box"
@@ -43,15 +51,19 @@ export default function Header(props: IHeaderProps) {
                     </div>
                 </div>
 
-                <div className="header-row">
-                    <h3>{props.movies.length} movies</h3>
+                <div className="header-row bottom-row">
+                    <span>{props.movies.length} movies</span>
                     <span> Filter by category
-                        <select>
-                            <option value="" selected>All</option>
-                            <option value="" >Action</option>
-                            <option value="" >Comedy</option>
-                            <option value="" >Thriller</option>
-                            <option value="" >Sci-fi</option>
+                        <select
+                            value={select}
+                            onChange={(e) => {
+                                getCategory(e.target.value);
+                            }}>
+                            <option value="1">All</option>
+                            <option value="5" >Action</option>
+                            <option value="7" >Comedy</option>
+                            <option value="6" >Thriller</option>
+                            <option value="8" >Sci-fi</option>
                         </select>
                     </span>
                 </div>

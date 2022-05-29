@@ -11,10 +11,6 @@
         width: 70%;
     }
 
-    @include mixins.desktop-and-up {
-        @include mixins.flex(row, space-between, flex-start, 0px);
-    }
-
 }
 
 .movie {
@@ -26,21 +22,19 @@
     padding: 10px;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.02);
         transition: all .3s;
     }
 
 
     @include mixins.tablet-and-up {
-        @include mixins.flex(column, space-between, flex-start, 0px);
         width: 40%;
-        height: 450px;
+        height: 400px;
         margin: 10px 0px;
 
     }
 
     @include mixins.desktop-and-up {
-        @include mixins.flex(column, space-between, flex-start, 0px);
         width: 20%;
         margin: 15px 0px;
         height: 380px;
@@ -107,8 +101,12 @@
         padding: 5px;
         margin: 0px;
     }
-}
 
-button {
-    @include mixins.btn();
+    button {
+        @include mixins.btn();
+
+        &:hover {
+            background-color: #252525;
+        }
+    }
 }

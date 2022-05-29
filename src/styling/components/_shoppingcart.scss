@@ -5,6 +5,11 @@
     padding: 0px 10px;
 
     @include mixins.tablet-and-up {
+        width: 45%;
+        padding: 0px 20px;
+    }
+
+    @include mixins.tablet-and-up {
         width: 25%;
         padding: 0px 20px;
     }
@@ -26,7 +31,7 @@
 
     .shopping-cart-items {
         @include mixins.flex(column, flex-end, flex-end, 0px);
-        padding: 30px 0px;
+        padding: 20px 0px 10px;
     }
 
     .cart-item {
@@ -39,6 +44,8 @@
             font-weight: 500;
             text-align: left;
         }
+
+
     }
 
     .cart-item-info {
@@ -82,7 +89,7 @@
     }
 
     .shopping-cart-total {
-        @include mixins.flex(row, space-between, center, 0px);
+        @include mixins.flex(color, space-between, center, 0px);
         width: 100%;
         border-top: 2px solid #FFDCB7;
         padding: 20px 0px 0px;
@@ -92,13 +99,25 @@
         }
 
         @include mixins.desktop-and-up {
-            @include mixins.flex(row, space-between, center, 0px);
+            @include mixins.flex(column, space-between, flex-start, 0px);
         }
     }
 
+    .shopping-cart-continue {
+        width: 100%;
+
+        button {
+            @include mixins.btn();
+            width: 100%;
+            margin: 15px 0px;
+        }
+    }
+
+
+
     .total {
-        font-weight: 700;
-        font-size: 1.1rem;
+        font-weight: 500;
+        font-size: 1rem;
     }
 
     .amountOfProducts {
@@ -116,7 +135,6 @@
     }
 
     .btn-remove {
-        margin-right: 5px;
-
+        @include mixins.btn();
     }
 }

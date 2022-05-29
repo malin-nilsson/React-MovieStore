@@ -1,0 +1,42 @@
+@use "../core/mixins";
+
+.checkout-box {
+    width: 100%;
+
+    .checkout-content {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .checkout-form {
+        input {
+            width: 95%;
+            border: none;
+            padding: 5px;
+            margin: 4px 0px;
+
+            &:focus {
+                outline: none;
+                border: none;
+                box-shadow: 0 0 7px 2px #554d4d;
+            }
+        }
+
+        .input-section {
+            margin: 10px 0px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            @include mixins.btn();
+            margin: 10px 0px;
+            width: 100%;
+        }
+    }
+
+    h3 {
+        font-weight: 300;
+        padding: 10px 0px 0px;
+        margin: 0;
+    }
+}

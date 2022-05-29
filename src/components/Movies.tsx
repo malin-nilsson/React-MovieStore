@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ICart } from '../models/ICart';
 import { IMovie } from '../models/IMovie'
+import Checkout from './Checkout';
 import Modal from './Modal';
 import ShoppingCart from './ShoppingCart';
 
@@ -19,8 +20,10 @@ export default function Movies(props: IMoviesProps) {
             price: 0,
             imageUrl: "",
             year: "",
+            productCategory: [{
+                categoryId: 0
+            }]
         }
-
     );
 
     ///////////////////
@@ -30,6 +33,7 @@ export default function Movies(props: IMoviesProps) {
         setModal(modal => !modal);
         setProduct(item)
     }
+
 
     /////////////////////
     /* Display movies */
@@ -132,6 +136,8 @@ export default function Movies(props: IMoviesProps) {
         setCart(tempCart)
     }
 
+
+
     return (
         <>
             {modal ? <Modal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
@@ -143,7 +149,9 @@ export default function Movies(props: IMoviesProps) {
                     removeFromCart={removeItem}
                     increaseQuantity={increaseQuantity}
                     decreaseQuantity={decreaseQuantity}
+
                 />
+
             </main>
         </>
     )
