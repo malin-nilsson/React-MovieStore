@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ICart } from '../models/ICart';
 import { IMovie } from '../models/IMovie'
 import MovieModal from './MovieModal';
+import OrderModal from './OrderModal';
 import ShoppingCart from './ShoppingCart';
 
 interface IMoviesProps {
@@ -10,7 +11,8 @@ interface IMoviesProps {
 
 export default function Movies(props: IMoviesProps) {
     const [cart, setCart] = useState<ICart[]>([]);
-    const [modal, setModal] = useState(false);
+    const [movieModal, setMovieModal] = useState(false);
+    const [orderModal, setOrderModal] = useState(false);
     const [product, setProduct] = useState<IMovie>(
         {
             id: 0,
@@ -29,7 +31,7 @@ export default function Movies(props: IMoviesProps) {
     /* Toggle modal */
     //////////////////
     const toggleModal = (item: IMovie) => {
-        setModal(modal => !modal);
+        setMovieModal(movieModal => !movieModal);
         setProduct(item)
     }
 
@@ -53,8 +55,6 @@ export default function Movies(props: IMoviesProps) {
                     </div>
                 </div>
             </div>
-
-
         )
     })
 
@@ -134,9 +134,15 @@ export default function Movies(props: IMoviesProps) {
         setCart(tempCart)
     }
 
+    const confirmOrder = (order: ICart[]) => {
+        setOrderModal(true)
+        console.log(order, orderModal)
+    }
+
     return (
         <>
-            {modal ? <MovieModal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
+            {movieModal ? <MovieModal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
+            {orderModal ? <OrderModal cart={cart} /> : ""}
             <main className="main-content">
                 <section className="movie-box">
                     {movies}
@@ -145,6 +151,7 @@ export default function Movies(props: IMoviesProps) {
                     removeFromCart={removeItem}
                     increaseQuantity={increaseQuantity}
                     decreaseQuantity={decreaseQuantity}
+                    confirmOrder={confirmOrder}
 
                 />
             </main>

@@ -10,6 +10,7 @@ interface ICartProps {
     removeFromCart: (index: number) => void;
     increaseQuantity: (index: number) => void;
     decreaseQuantity: (index: number) => void;
+    confirmOrder: (cart: ICart[]) => void;
 }
 
 export default function ShoppingCart(props: ICartProps) {
@@ -32,8 +33,13 @@ export default function ShoppingCart(props: ICartProps) {
         props.decreaseQuantity(id)
     }
 
+    /* Toggle checkout section */
     const toggleCheckout = () => {
         setCheckout(checkout => !checkout);
+    }
+
+    const placeOrder = () => {
+        props.confirmOrder(props.cart)
     }
 
 
@@ -105,7 +111,7 @@ export default function ShoppingCart(props: ICartProps) {
                     </div>
                 </div>
 
-                {checkout ? <Checkout /> : ""}
+                {checkout ? <Checkout placeOrder={placeOrder} /> : ""}
             </section>
         </>
     } else {
@@ -119,3 +125,4 @@ export default function ShoppingCart(props: ICartProps) {
         )
     }
 }
+

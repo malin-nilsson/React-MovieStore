@@ -1,8 +1,17 @@
 import React from 'react'
 import { ICart } from '../models/ICart';
 
+interface ICheckoutProps {
+    placeOrder: () => void;
+}
 
-export default function Checkout() {
+export default function Checkout(props: ICheckoutProps) {
+
+    const placeOrder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        props.placeOrder();
+    }
+
     const checkoutHTML = (
         <form action="" className="checkout-form">
             <div className="input-section">
@@ -17,7 +26,8 @@ export default function Checkout() {
                 <label>Address</label>
                 <input type="text" name="" id="" />
             </div>
-            <button>Place order</button>
+            <button
+                onClick={(e) => { placeOrder(e) }}>Place order</button>
         </form>
     );
 

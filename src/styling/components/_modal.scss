@@ -9,6 +9,7 @@
     top: 0;
     overflow: auto;
     height: 100vh;
+    width: 100vw;
     background-color: rgba(0, 0, 0, 0.6);
 
     // Modal content styling
@@ -147,6 +148,32 @@
         font: inherit;
         cursor: pointer;
         outline: inherit;
+    }
+
+    .order-box {
+        width: 100%;
+
+        h2 {
+            text-align: center;
+            padding: 0px 0px 20px;
+        }
+    }
+
+    .order-content {
+        @include mixins.flex(column, center, flex-start, 20px);
+        color: #fff;
+        width: 100%;
+        padding: 0px 40px 20px;
+
+        p {
+            padding: 5px 0px;
+        }
+
+
+    }
+
+    .order-address {
+        padding: 20px 0px;
     }
 }
 
