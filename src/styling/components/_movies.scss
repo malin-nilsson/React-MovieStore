@@ -105,8 +105,5 @@
     button {
         @include mixins.btn();
 
-        &:hover {
-            background-color: #252525;
-        }
     }
 }

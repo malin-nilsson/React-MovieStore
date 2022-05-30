@@ -1,3 +1,5 @@
+@use "../core/variables";
+
 * {
     padding: 0;
     margin: 0;
@@ -5,7 +7,7 @@
 
 body {
     box-sizing: border-box;
-    background-color: #171616;
+    background-color: variables.$color-dkgray;
     color: #fff;
     font-size: 12pt;
 }

@@ -12,9 +12,9 @@ export default function OrderModal(props: IOrderModalProps) {
 
             <div key={item.productId} className="order">
                 <div className="order-info">
+                    <p>Order #</p>
                     <p>{item.productName}</p>
                     <p>{item.productPrice} SEK x {item.productAmount}</p>
-                    <p>Order #</p>
                     <div className="order-address">
                         <p>Name</p>
                         <p>Address</p>

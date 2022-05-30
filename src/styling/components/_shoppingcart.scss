@@ -1,4 +1,5 @@
 @use "../core/mixins";
+@use "../core/variables";
 
 .shopping-cart-box {
     width: 90%;
@@ -24,7 +25,7 @@
         padding: 0;
         font-size: 1rem;
         padding: 5px 0px;
-        border-bottom: 2px solid #FFDCB7;
+        border-bottom: 2px solid variables.$color-dkpurple;
         color: #fff;
         font-weight: 300;
     }
@@ -91,7 +92,7 @@
     .shopping-cart-total {
         @include mixins.flex(color, space-between, center, 0px);
         width: 100%;
-        border-top: 2px solid #FFDCB7;
+        border-top: 2px solid variables.$color-dkpurple;
         padding: 20px 0px 0px;
 
         @include mixins.tablet-and-up {

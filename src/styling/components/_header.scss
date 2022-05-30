@@ -34,7 +34,6 @@ header {
     h1 {
         font-size: 2rem;
         font-weight: 900;
-
         color: #fff;
     }
 
@@ -47,7 +46,7 @@ header {
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 2px;
-        border: 1px solid #b8a087;
+        border: 1px solid #b782d3;
         color: #fff;
         border-radius: 2px;
         margin-left: 1rem;
@@ -62,7 +61,7 @@ header {
     }
 
     .logo-color {
-        color: #FFDCB7;
+        color: #b782d3;
     }
 
     svg:hover {
@@ -81,15 +80,15 @@ header {
         padding: 7px 8px;
         width: 300px;
         border-radius: 2px;
-        border: 1px solid #b8a087;
-        color: rgb(113, 113, 113);
+        border: 1px solid #b782d3;
+        color: rgb(114, 92, 137);
         font-size: 0.9rem;
         background: transparent;
 
         &:focus {
             outline: none;
             border: none;
-            box-shadow: 0 0 7px 2px #554d4d;
+            box-shadow: 0 0 7px 2px #4c3358;
         }
     }
 

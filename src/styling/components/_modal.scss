@@ -1,4 +1,5 @@
 @use "../core/mixins";
+@use "../core/variables";
 
 // Modal container styling
 .modal-container {
@@ -102,7 +103,7 @@
             color: #fff;
 
             span {
-                color: #FFDCB7;
+                color: #b782d3;
 
                 &:hover {
                     cursor: pointer;
@@ -123,14 +124,15 @@
 
             button {
                 @include mixins.btn();
-                display: flex;
-                gap: 10px;
+                @include mixins.flex(row, center, center, 10px);
+                padding: 13px 15px;
                 border: none;
 
                 &:hover {
-                    background-color: #e0c2a2;
+                    background-color: #a978c3;
                     color: #000;
                     border: none;
+
                 }
             }
 
@@ -154,6 +156,7 @@
         width: 100%;
 
         h2 {
+            color: variables.$color-lightpurple;
             text-align: center;
             padding: 0px 0px 20px;
         }
