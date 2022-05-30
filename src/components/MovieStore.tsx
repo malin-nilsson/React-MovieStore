@@ -31,7 +31,7 @@ export default function MovieStore() {
         return loaderHTML
     }
 
-
+    // Work in progress - search/filter stuff
     const searchResults = (input: string) => {
         let titlesFromAPI = []
         for (let i = 0; i < results.length; i++) {

@@ -1,13 +1,13 @@
 import React from 'react'
 import { IMovie } from '../models/IMovie';
 
-interface IModalProps {
+interface IModalMovieProps {
     product: IMovie;
     toggleModal: (product: IMovie) => void;
     addMovieFromModal: (product: IMovie) => void;
 }
 
-export default function Modal(props: IModalProps) {
+export default function MovieModal(props: IModalMovieProps) {
 
     const addMovieFromModal = (product: IMovie) => {
         props.addMovieFromModal(product)
