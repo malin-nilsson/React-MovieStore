@@ -3,9 +3,14 @@ import { ICart } from '../models/ICart';
 
 interface IOrderModalProps {
     cart: ICart[];
+    toggleOrderModal: () => void;
 }
 
 export default function OrderModal(props: IOrderModalProps) {
+
+    const closeModal = () => {
+        props.toggleOrderModal();
+    }
 
     const order = props.cart.map((item, i) => {
         return (
@@ -15,6 +20,7 @@ export default function OrderModal(props: IOrderModalProps) {
                     <p>Order #</p>
                     <p>{item.productName}</p>
                     <p>{item.productPrice} SEK x {item.productAmount}</p>
+                    <p>Total: {item.productPrice * item.productAmount} SEK</p>
                     <div className="order-address">
                         <p>Name</p>
                         <p>Address</p>
@@ -30,6 +36,9 @@ export default function OrderModal(props: IOrderModalProps) {
             <div className="modal">
                 <div className="modal-header">
                     <button className="btn-close-modal"
+                        onClick={() => {
+                            closeModal();
+                        }}
                     ><span>X</span></button>
 
                 </div>

@@ -134,15 +134,21 @@ export default function Movies(props: IMoviesProps) {
         setCart(tempCart)
     }
 
+    ////////////////////////////////////
+    /* Show popup with order confirmation */
+    ////////////////////////////////////
     const confirmOrder = (order: ICart[]) => {
         setOrderModal(true)
-        console.log(order, orderModal)
+    }
+
+    const toggleOrderModal = () => {
+        setOrderModal(false);
     }
 
     return (
         <>
             {movieModal ? <MovieModal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
-            {orderModal ? <OrderModal cart={cart} /> : ""}
+            {orderModal ? <OrderModal cart={cart} toggleOrderModal={toggleOrderModal} /> : ""}
             <main className="main-content">
                 <section className="movie-box">
                     {movies}
