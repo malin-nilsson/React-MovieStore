@@ -60,10 +60,10 @@ export default function Header(props: IHeaderProps) {
                                 getCategory(e.target.value);
                             }}>
                             <option value="1">All</option>
-                            <option value="5" >Action</option>
-                            <option value="7" >Comedy</option>
-                            <option value="6" >Thriller</option>
-                            <option value="8" >Sci-fi</option>
+                            <option value="5">Action</option>
+                            <option value="7">Comedy</option>
+                            <option value="6">Thriller</option>
+                            <option value="8">Sci-fi</option>
                         </select>
                     </span>
                 </div>
