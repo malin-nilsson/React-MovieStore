@@ -1,5 +1,4 @@
 @use "../core/mixins";
-@use "../core/variables";
 
 .checkout-box {
     width: 100%;
@@ -36,7 +35,6 @@
     }
 
     h3 {
-        color: variables.$color-lightpurple;
         font-weight: 300;
         padding: 10px 0px 0px;
         margin: 0;

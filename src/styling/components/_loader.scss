@@ -1,4 +1,5 @@
 @use "../core/mixins";
+@use "../core/variables";
 
 .loader-container {
     @include mixins.flex(column, center, center, 0px);
@@ -6,9 +7,9 @@
 }
 
 .loader {
-    border: 16px solid #f3f3f3;
+    border: 16px solid variables.$color-lightpurple;
     /* Light grey */
-    border-top: 16px solid #838587;
+    border-top: 16px solid variables.$color-dkpurple;
     /* Blue */
     border-radius: 50%;
     width: 80px;
@@ -27,6 +28,6 @@
 }
 
 .loader-text {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 35px 0px 0px;
 }

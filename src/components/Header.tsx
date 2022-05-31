@@ -1,4 +1,6 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
+import axios from 'axios';
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
+import { ICategory } from '../models/ICategory';
 import { IMovie } from '../models/IMovie';
 
 interface IHeaderProps {
@@ -7,9 +9,20 @@ interface IHeaderProps {
     movies: IMovie[];
 }
 
+const url = "https://medieinstitutet-wie-products.azurewebsites.net/api/categories";
+
 export default function Header(props: IHeaderProps) {
     const [input, setInput] = useState("");
     const [select, setSelect] = useState("");
+    const [category, setCategory] = useState<ICategory[]>([]);
+
+    useEffect(() => {
+        if (category.length !== 0) return;
+        axios.get(url)
+            .then((response) => {
+                setCategory(response.data)
+            })
+    })
 
     const searchTitle = () => {
         let titleInUppercase = input.toUpperCase();
@@ -18,9 +31,24 @@ export default function Header(props: IHeaderProps) {
 
     const getCategory = (value: string) => {
         setSelect(value)
-        let categorynumber = parseInt(value);
-        props.getCategory(categorynumber)
+        let categoryId = parseInt(value);
+        props.getCategory(categoryId)
     }
+
+    const dropdown = (<span> Filter by category
+        <select value={select}
+            onChange={(e) => {
+                getCategory(e.target.value);
+            }}>
+            <>
+                <option value="1">All</option>
+                {category.map((categoryItem) => {
+                    return (<option value={categoryItem.id} key={categoryItem.id}>{categoryItem.name} </option>)
+                })}
+            </>
+        </select>
+    </span>)
+
 
     return (
         <>
@@ -53,19 +81,7 @@ export default function Header(props: IHeaderProps) {
 
                 <div className="header-row bottom-row">
                     <span>{props.movies.length} movies</span>
-                    <span> Filter by category
-                        <select
-                            value={select}
-                            onChange={(e) => {
-                                getCategory(e.target.value);
-                            }}>
-                            <option value="1">All</option>
-                            <option value="5">Action</option>
-                            <option value="7">Comedy</option>
-                            <option value="6">Thriller</option>
-                            <option value="8">Sci-fi</option>
-                        </select>
-                    </span>
+                    {dropdown}
                 </div>
             </header>
         </>

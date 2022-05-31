@@ -51,9 +51,10 @@ export default function MovieStore() {
     const displayCategory = (categoryId: number) => {
         if (categoryId === 1) {
             setFilteredResults(results)
+        } else {
+            let moviesFromCategory = results.filter((movie) => movie.productCategory[0].categoryId === categoryId);
+            setFilteredResults(moviesFromCategory)
         }
-        let moviesFromCategory = results.filter((movie) => movie.productCategory[0].categoryId === categoryId);
-        setFilteredResults(moviesFromCategory)
     }
 
     return (
