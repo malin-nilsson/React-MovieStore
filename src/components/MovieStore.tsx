@@ -4,7 +4,7 @@ import { IMovie } from "../models/IMovie";
 import Header from "./Header";
 import Movies from "./Movies";
 
-const baseURL = "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
+const productsAPI = "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
 
 export default function MovieStore() {
     const [results, setResults] = useState<IMovie[]>([]);
@@ -13,7 +13,7 @@ export default function MovieStore() {
 
     useEffect(() => {
         if (results.length !== 0) return;
-        axios.get(baseURL)
+        axios.get(productsAPI)
             .then((response) => {
                 response.data.splice(-4, 4);
                 setResults(response.data);
@@ -35,16 +35,14 @@ export default function MovieStore() {
 
     // Work in progress - filter based on search 
     const searchResults = (input: string) => {
-        let titlesFromAPI = []
-        for (let i = 0; i < results.length; i++) {
-            let titleName = results[i].name.toUpperCase();
-            titlesFromAPI.push(titleName)
+        if (input === "") {
+            setFilteredResults(results)
+        } else {
+            axios.get('https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=' + input)
+                .then((response) => {
+                    setFilteredResults(response.data)
+                })
         }
-
-        let searchResult = titlesFromAPI.filter((movie) => movie === input)
-        const test = titlesFromAPI.filter((movie) => movie.startsWith(input));
-        console.log(test)
-        console.log(searchResult)
     }
 
     /* Filter based on category */

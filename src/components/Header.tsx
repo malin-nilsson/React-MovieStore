@@ -25,8 +25,7 @@ export default function Header(props: IHeaderProps) {
     })
 
     const searchTitle = () => {
-        let titleInUppercase = input.toUpperCase();
-        props.movieSearch(titleInUppercase)
+        props.movieSearch(input)
     }
 
     const getCategory = (value: string) => {
@@ -35,19 +34,44 @@ export default function Header(props: IHeaderProps) {
         props.getCategory(categoryId)
     }
 
-    const dropdown = (<span> Filter by category
-        <select value={select}
-            onChange={(e) => {
-                getCategory(e.target.value);
-            }}>
-            <>
-                <option value="1">All</option>
-                {category.map((categoryItem) => {
-                    return (<option value={categoryItem.id} key={categoryItem.id}>{categoryItem.name} </option>)
-                })}
-            </>
-        </select>
-    </span>)
+    const categoryDropdown = (
+        <span> Filter by category
+            <select value={select}
+                onChange={(e) => {
+                    getCategory(e.target.value);
+                }}>
+                <>
+                    <option value="1">All</option>
+                    {category.map((categoryItem) => {
+                        return (<option value={categoryItem.id} key={categoryItem.id}>{categoryItem.name} </option>)
+                    })}
+                </>
+            </select>
+        </span>
+    )
+
+    const searchField = (
+        <div className="header-search">
+            <input type="text"
+                placeholder="Search movie..."
+                className="search-box"
+                value={input}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    setInput(e.target.value);
+                }}
+                onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                    if (e.key === "Enter" && input) {
+                        searchTitle()
+                    }
+                }}
+            />
+            <button
+                onClick={() => {
+                    if (input) searchTitle();
+                }}>Search</button>
+        </div>
+    )
 
 
     return (
@@ -57,31 +81,12 @@ export default function Header(props: IHeaderProps) {
                     <div className="header-logo">
                         <h1><span className="logo-color">Movie </span>Shop.</h1>
                     </div>
-                    <div className="header-search">
-                        <input type="text"
-                            placeholder="Search movie..."
-                            className="search-box"
-                            value={input}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                                setInput(e.target.value);
-                            }}
-                            onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
-                                e.preventDefault();
-                                if (e.key === "Enter" && input) {
-                                    searchTitle()
-                                }
-                            }}
-                        />
-                        <button
-                            onClick={() => {
-                                if (input) searchTitle();
-                            }}>Search</button>
-                    </div>
+                    {searchField}
                 </div>
 
                 <div className="header-row bottom-row">
                     <span>{props.movies.length} movies</span>
-                    {dropdown}
+                    {categoryDropdown}
                 </div>
             </header>
         </>
