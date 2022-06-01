@@ -25,7 +25,7 @@ export default function MovieStore() {
     let loaderHTML = (
         <div className="loader-container">
             <div className="loader"></div>
-            <p className="loader-text">Loading movie store...</p>
+            <p className="loader-text">Loading...</p>
         </div>
     );
 

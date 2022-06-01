@@ -85,7 +85,6 @@ export default function Header(props: IHeaderProps) {
                 </div>
 
                 <div className="header-row bottom-row">
-                    <span>{props.movies.length} movies</span>
                     {categoryDropdown}
                 </div>
             </header>

@@ -1,4 +1,5 @@
 @use "../core/mixins";
+@use "../core/variables";
 
 header {
     background-color: #1a1919;
@@ -12,7 +13,7 @@ header {
     padding: 0px;
 
     @include mixins.tablet-and-up {
-        gap: 0px;
+        gap: 7px;
         padding: 30px 50px;
         position: fixed;
         padding: 20px;
@@ -23,7 +24,7 @@ header {
         padding: 10px;
 
         @include mixins.tablet-and-up {
-            @include mixins.flex(row, center, center, 40px);
+            @include mixins.flex(row, center, center, 50px);
         }
     }
 
@@ -46,7 +47,7 @@ header {
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 2px;
-        border: 1px solid #b782d3;
+        border: 1px solid variables.$color-lightpurple;
         color: #fff;
         border-radius: 2px;
         margin-left: 1rem;
@@ -77,22 +78,24 @@ header {
     }
 
     .search-box {
-        padding: 7px 8px;
-        width: 300px;
-        border-radius: 2px;
-        border: 1px solid #b782d3;
+        padding: 10px 2px;
+        width: 350px;
+        border-radius: 0px;
+        border: none;
+        border-bottom: 1px solid variables.$color-lightpurple;
         color: rgb(114, 92, 137);
-        font-size: 0.9rem;
+        font-size: 1.05rem;
         background: transparent;
 
         &:focus {
             outline: none;
             border: none;
-            box-shadow: 0 0 7px 2px #4c3358;
+
         }
     }
 
     button {
         @include mixins.btn();
+        padding: 11px 17px;
     }
 }
