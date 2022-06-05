@@ -1,5 +1,4 @@
 import React from 'react'
-import { ICart } from '../models/ICart';
 
 interface ICheckoutProps {
     placeOrder: () => void;

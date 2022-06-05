@@ -42,7 +42,6 @@ export default function ShoppingCart(props: ICartProps) {
         props.confirmOrder(props.cart)
     }
 
-
     if (props.cart.length !== 0) {
         return <>
             <section className="shopping-cart-box">

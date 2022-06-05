@@ -139,10 +139,14 @@ export default function Movies(props: IMoviesProps) {
     ////////////////////////////////////
     const confirmOrder = (order: ICart[]) => {
         setOrderModal(true)
+
     }
 
     const toggleOrderModal = () => {
         setOrderModal(false);
+        let tempCart = [...cart];
+        tempCart = [];
+        setCart(tempCart)
     }
 
     return (
