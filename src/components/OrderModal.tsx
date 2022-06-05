@@ -38,12 +38,16 @@ export default function OrderModal(props: IOrderModalProps) {
 
                 </div>
                 <div className="order-box">
-                    <h2>Order confirmation</h2>
+                    <div className="order-heading">
+                        <h2>Order confirmation</h2>
+                        <p>Thank you for your order!</p>
+                    </div>
                     <div className="order-content">
                         <div className="order-info">
-                            <p>Order #</p>
+                            <h3>Order #</h3>
+
                             {order}
-                            <p>Total: {sum} SEK</p>
+                            <p><span className="total">Total: </span>{sum} SEK</p>
                             <div className="order-address">
                                 <p>Name</p>
                                 <p>Address</p>
