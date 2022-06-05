@@ -162,6 +162,11 @@
         }
     }
 
+    .order {
+        margin: 10px 0px;
+        font-weight: 300;
+    }
+
     .order-content {
         @include mixins.flex(column, center, flex-start, 20px);
         color: #fff;
@@ -177,6 +182,11 @@
 
     .order-address {
         padding: 20px 0px;
+
+        p {
+            padding: 2px 0px;
+            margin: 0px;
+        }
     }
 }
 
