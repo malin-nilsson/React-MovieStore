@@ -10,7 +10,7 @@
         padding: 0px 20px;
     }
 
-    @include mixins.tablet-and-up {
+    @include mixins.desktop-and-up {
         width: 25%;
         padding: 0px 20px;
     }

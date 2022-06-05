@@ -5,25 +5,24 @@
 
     .checkout-content {
         width: 90%;
-        margin: 0 auto;
+        margin: 20px auto;
     }
 
     .checkout-form {
+        padding: 10px 0px;
+
         input {
-            width: 95%;
-            border: none;
-            padding: 5px;
-            margin: 4px 0px;
+            @include mixins.input(95%, 0.9rem, 5px 0px);
+            margin: 5px 0px;
 
             &:focus {
-                outline: none;
-                border: none;
+                padding: 7px 4px;
             }
         }
 
-        .input-section {
-            margin: 10px 0px;
-            font-size: 0.9rem;
+        .input-group {
+            margin: 20px 0px;
+            position: relative;
         }
 
         button {
@@ -31,11 +30,17 @@
             margin: 10px 0px;
             width: 100%;
         }
+
+        label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+
+        }
     }
 
     h3 {
         font-weight: 300;
-        padding: 10px 0px 0px;
+        padding: 0;
         margin: 0;
     }
 }

@@ -38,3 +38,25 @@
         transition: all 0.25s ease-in-out;
     }
 }
+
+// Input styling
+
+@mixin input($width, $fontsize, $padding) {
+    padding: $padding;
+    width: $width;
+    font-size: $fontsize;
+    border: none;
+    border-bottom: 1px solid variables.$color-lightpurple;
+    color: rgb(87, 84, 89);
+    background: transparent;
+    transition: all 0.1s ease-in-out;
+
+    &:focus {
+        outline: none;
+        border: none;
+        border-bottom: 1px solid variables.$color-lightpurple;
+        transition: all 0.1s ease-in-out;
+        background: variables.$color-gray;
+        color: #fff;
+    }
+}

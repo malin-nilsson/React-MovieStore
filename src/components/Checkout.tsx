@@ -14,17 +14,17 @@ export default function Checkout(props: ICheckoutProps) {
 
     const checkoutHTML = (
         <form action="" className="checkout-form">
-            <div className="input-section">
+            <div className="input-group">
                 <label>Name</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="" placeholder="Name" />
             </div>
-            <div className="input-section">
+            <div className="input-group">
                 <label>E-mail</label>
-                <input type="email" name="" id="" />
+                <input type="email" name="" placeholder="Email" />
             </div>
-            <div className="input-section">
+            <div className="input-group">
                 <label>Address</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="" placeholder="Address" />
             </div>
             <button
                 onClick={(e) => { placeOrder(e) }}>Place order</button>

@@ -26,6 +26,7 @@ export default function Header(props: IHeaderProps) {
 
     const searchTitle = () => {
         props.movieSearch(input)
+        setInput("");
     }
 
     const getCategory = (value: string) => {
@@ -69,7 +70,9 @@ export default function Header(props: IHeaderProps) {
             <button
                 onClick={() => {
                     if (input) searchTitle();
-                }}>Search</button>
+                }}>
+                <img src="/search.svg" alt="" />
+            </button>
         </div>
     )
 
