@@ -7,6 +7,7 @@ import ShoppingCart from './ShoppingCart';
 
 interface IMoviesProps {
     movies: IMovie[]
+    placeholder: string;
 }
 
 export default function Movies(props: IMoviesProps) {
@@ -165,6 +166,7 @@ export default function Movies(props: IMoviesProps) {
             <main className="main-content">
                 <section className="movie-box">
                     {movies}
+                    <h4> {props.placeholder}</h4>
                 </section>
                 <ShoppingCart cart={cart} sum={sum}
                     removeFromCart={removeItem}

@@ -10,6 +10,7 @@ export default function MovieStore() {
     const [results, setResults] = useState<IMovie[]>([]);
     const [filteredResults, setFilteredResults] = useState<IMovie[]>([]);
     const [loader, setLoader] = useState(true);
+    const [placeholder, setPlaceholder] = useState("");
 
     useEffect(() => {
         if (results.length !== 0) return;
@@ -41,6 +42,10 @@ export default function MovieStore() {
             axios.get('https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=' + input)
                 .then((response) => {
                     setFilteredResults(response.data)
+
+                    if (filteredResults.length === 0) {
+                        setPlaceholder("Sorry, we couldn't find any results.")
+                    }
                 })
         }
     }
@@ -59,7 +64,7 @@ export default function MovieStore() {
         <>
             <Header movieSearch={searchResults} movies={results}
                 getCategory={displayCategory} />
-            <Movies movies={filteredResults} />
+            <Movies movies={filteredResults} placeholder={placeholder} />
         </>
     )
 }
