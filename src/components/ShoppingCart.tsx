@@ -110,7 +110,7 @@ export default function ShoppingCart(props: ICartProps) {
                     </div>
                 </div>
 
-                {checkout ? <Checkout placeOrder={placeOrder} /> : ""}
+                {checkout ? <Checkout placeOrder={placeOrder} toggleCheckout={toggleCheckout} /> : ""}
             </section>
         </>
     } else {

@@ -2,6 +2,7 @@ import React from 'react'
 
 interface ICheckoutProps {
     placeOrder: () => void;
+    toggleCheckout: () => void;
 }
 
 export default function Checkout(props: ICheckoutProps) {
@@ -9,7 +10,10 @@ export default function Checkout(props: ICheckoutProps) {
     const placeOrder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         props.placeOrder();
+        props.toggleCheckout();
     }
+
+
 
     const checkoutHTML = (
         <form action="" className="checkout-form">
