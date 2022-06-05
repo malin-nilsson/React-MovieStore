@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 
 interface ICheckoutProps {
-    placeOrder: (userData: { name: string; email: string; address: string; }, orderId: string) => void;
+    placeOrder: (userData: { name: string; email: string; payment: string; }, orderId: string) => void;
     toggleCheckout: () => void;
 }
 
@@ -10,7 +10,7 @@ export default function Checkout(props: ICheckoutProps) {
     const [data, setData] = useState({
         name: "",
         email: "",
-        address: ""
+        payment: ""
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +19,7 @@ export default function Checkout(props: ICheckoutProps) {
             ...data,
             [e.target.name]: value
         });
+        console.log(data)
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +27,7 @@ export default function Checkout(props: ICheckoutProps) {
         const userData = {
             name: data.name,
             email: data.email,
-            address: data.address
+            payment: data.payment
         };
 
 
@@ -38,7 +39,7 @@ export default function Checkout(props: ICheckoutProps) {
     };
 
 
-    const placeOrder = (userData: { name: string; email: string; address: string; }, orderId: string) => {
+    const placeOrder = (userData: { name: string; email: string; payment: string; }, orderId: string) => {
         props.placeOrder(userData, orderId);
         props.toggleCheckout();
     }
@@ -48,16 +49,26 @@ export default function Checkout(props: ICheckoutProps) {
     const checkoutHTML = (
         <form onSubmit={handleSubmit} className="checkout-form">
             <div className="input-group">
-                <label>Name</label>
+                <span>Name</span>
                 <input type="text" name="name" placeholder="Name" onChange={((e) => { handleChange(e) })} />
             </div>
             <div className="input-group">
-                <label>E-mail</label>
+                <span>E-mail</span>
                 <input type="email" name="email" placeholder="Email" onChange={((e) => { handleChange(e) })} />
             </div>
             <div className="input-group">
-                <label>Address</label>
-                <input type="text" name="address" placeholder="Address" onChange={((e) => { handleChange(e) })} />
+                <span>Payment method</span>
+                <div className="payment">
+                    <div className="payment-method">
+                        <input type="radio" name="payment" value="Paypal" onChange={((e) => { handleChange(e) })} />
+                        <label>Paypal</label>
+                    </div>
+
+                    <div className="payment-method">
+                        <input type="radio" name="payment" value="Credit card" onChange={((e) => { handleChange(e) })} />
+                        <label>Credit card</label>
+                    </div>
+                </div>
             </div>
             <button type="submit">Place order</button>
         </form>

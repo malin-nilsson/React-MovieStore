@@ -4,7 +4,7 @@ import { ICart } from '../models/ICart';
 interface IOrderModalProps {
     cart: ICart[];
     orderId: string;
-    userData: { name: string, email: string, address: string };
+    userData: { name: string, email: string, payment: string };
     toggleOrderModal: () => void;
 }
 
@@ -49,11 +49,13 @@ export default function OrderModal(props: IOrderModalProps) {
                             <h3>Order #{props.orderId}</h3>
 
                             {order}
+
                             <p><span className="total">Total: </span>{sum} SEK</p>
+                            <p>Payment method: {props.userData.payment}</p>
                             <div className="order-address">
                                 <p>{props.userData.name}</p>
                                 <p>{props.userData.email}</p>
-                                <p>{props.userData.address}</p>
+
                             </div>
                         </div>
                     </div>

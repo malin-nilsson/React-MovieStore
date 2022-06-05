@@ -17,7 +17,7 @@ export default function Movies(props: IMoviesProps) {
     const [userData, setUserData] = useState({
         name: "",
         email: "",
-        address: ""
+        payment: ""
     })
     const [product, setProduct] = useState<IMovie>(
         {
@@ -143,7 +143,7 @@ export default function Movies(props: IMoviesProps) {
     ////////////////////////////////////
     /* Show popup with order confirmation */
     ////////////////////////////////////
-    const confirmOrder = (cart: ICart[], userData: { name: string; email: string; address: string; }, orderId: string) => {
+    const confirmOrder = (cart: ICart[], userData: { name: string; email: string; payment: string; }, orderId: string) => {
         setOrderModal(true)
         setOrderId(orderId);
         setUserData(userData)
