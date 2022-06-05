@@ -38,7 +38,7 @@ export default function Checkout(props: ICheckoutProps) {
     return (
         <section className="checkout-box">
             <div className="checkout-content">
-                <h3>Customer information:</h3>
+                <h3>Checkout</h3>
                 {checkoutHTML}
             </div>
         </section>
