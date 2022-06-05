@@ -36,19 +36,22 @@ export default function Header(props: IHeaderProps) {
     }
 
     const categoryDropdown = (
-        <span> Filter by category
+        <>
+            <button onClick={(() => { getCategory("1") })}>All movies</button>
             <select value={select}
                 onChange={(e) => {
                     getCategory(e.target.value);
                 }}>
                 <>
-                    <option value="1">All</option>
+                    <option value="1">Category</option>
                     {category.map((categoryItem) => {
                         return (<option value={categoryItem.id} key={categoryItem.id}>{categoryItem.name} </option>)
                     })}
                 </>
             </select>
-        </span>
+
+
+        </>
     )
 
     const searchField = (

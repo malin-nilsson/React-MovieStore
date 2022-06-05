@@ -13,7 +13,7 @@ header {
     padding: 0px;
 
     @include mixins.tablet-and-up {
-        gap: 7px;
+        gap: 15px;
         padding: 30px 50px;
         position: fixed;
         padding: 20px;
@@ -22,6 +22,10 @@ header {
 
     .header-logo {
         padding: 10px;
+
+        @include mixins.tablet-and-up {
+            padding: 0px 20px;
+        }
     }
 
     .header-row {
@@ -35,11 +39,12 @@ header {
     }
 
     .bottom-row {
+        @include mixins.flex(row, flex-start, center, 20px);
         font-size: 0.90rem;
+        padding: 0px 10px;
 
-
-        span {
-            padding: 10px;
+        @include mixins.tablet-and-up {
+            padding: 0px 20px;
         }
     }
 
@@ -61,7 +66,6 @@ header {
         border: 1px solid variables.$color-lightpurple;
         color: #fff;
         border-radius: 2px;
-        margin-left: 1rem;
         padding: 7px 30px 7px 10px;
         font-size: 0.9rem;
         cursor: pointer;
@@ -81,7 +85,7 @@ header {
     }
 
     .header-search {
-        @include mixins.flex(column, center, flex-start, 10px);
+        @include mixins.flex(row, center, flex-start, 10px);
         padding: 10px;
 
 
@@ -91,7 +95,7 @@ header {
     }
 
     .search-box {
-        @include mixins.input(330px, 1.05rem, 10px 5px);
+        @include mixins.input(280px, 1.05rem, 10px 5px);
 
         @include mixins.tablet-and-up {
             @include mixins.input(350px, 1.05rem, 10px 7px);
