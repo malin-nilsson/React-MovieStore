@@ -13,7 +13,7 @@ header {
     padding: 0px;
 
     @include mixins.tablet-and-up {
-        gap: 15px;
+        gap: 23px;
         padding: 30px 50px;
         position: fixed;
         padding: 20px;
@@ -25,6 +25,18 @@ header {
 
         @include mixins.tablet-and-up {
             padding: 0px 20px;
+        }
+
+        .logo-text {
+            @include mixins.flex(row, flex-start, center, 10px);
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 4px 0px;
+
+            img {
+                height: 23px;
+                width: 23px;
+            }
         }
     }
 
@@ -41,7 +53,16 @@ header {
     .bottom-row {
         @include mixins.flex(row, flex-start, center, 20px);
         font-size: 0.90rem;
-        padding: 0px 10px;
+
+        button {
+            margin-left: 10px;
+
+
+            @include mixins.tablet-and-up {
+                margin: 0;
+            }
+        }
+
 
         @include mixins.tablet-and-up {
             padding: 0px 20px;

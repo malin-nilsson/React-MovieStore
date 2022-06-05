@@ -74,7 +74,7 @@ export default function Header(props: IHeaderProps) {
                 onClick={() => {
                     if (input) searchTitle();
                 }}>
-                <img src="/search.svg" alt="" />
+                <img src="/images/search.svg" alt="Magnifying glass icon" />
             </button>
         </div>
     )
@@ -86,6 +86,7 @@ export default function Header(props: IHeaderProps) {
                 <div className="header-row">
                     <div className="header-logo">
                         <h1><span className="logo-color">Movie </span>Shop.</h1>
+                        <p className="logo-text">Stream. Rent. Buy.  <img src="/images/clapperboard-solid.svg" alt="Clapperboard icon" /></p>
                     </div>
                     {searchField}
                 </div>
