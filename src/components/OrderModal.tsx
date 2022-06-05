@@ -3,6 +3,8 @@ import { ICart } from '../models/ICart';
 
 interface IOrderModalProps {
     cart: ICart[];
+    orderId: string;
+    userData: { name: string, email: string, address: string };
     toggleOrderModal: () => void;
 }
 
@@ -44,14 +46,14 @@ export default function OrderModal(props: IOrderModalProps) {
                     </div>
                     <div className="order-content">
                         <div className="order-info">
-                            <h3>Order #</h3>
+                            <h3>Order #{props.orderId}</h3>
 
                             {order}
                             <p><span className="total">Total: </span>{sum} SEK</p>
                             <div className="order-address">
-                                <p>Name</p>
-                                <p>Address</p>
-                                <p>E-mail</p>
+                                <p>{props.userData.name}</p>
+                                <p>{props.userData.email}</p>
+                                <p>{props.userData.address}</p>
                             </div>
                         </div>
                     </div>

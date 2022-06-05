@@ -13,6 +13,12 @@ export default function Movies(props: IMoviesProps) {
     const [cart, setCart] = useState<ICart[]>([]);
     const [movieModal, setMovieModal] = useState(false);
     const [orderModal, setOrderModal] = useState(false);
+    const [orderId, setOrderId] = useState("");
+    const [userData, setUserData] = useState({
+        name: "",
+        email: "",
+        address: ""
+    })
     const [product, setProduct] = useState<IMovie>(
         {
             id: 0,
@@ -137,9 +143,10 @@ export default function Movies(props: IMoviesProps) {
     ////////////////////////////////////
     /* Show popup with order confirmation */
     ////////////////////////////////////
-    const confirmOrder = (order: ICart[]) => {
+    const confirmOrder = (cart: ICart[], userData: { name: string; email: string; address: string; }, orderId: string) => {
         setOrderModal(true)
-
+        setOrderId(orderId);
+        setUserData(userData)
     }
 
     const toggleOrderModal = () => {
@@ -152,7 +159,9 @@ export default function Movies(props: IMoviesProps) {
     return (
         <>
             {movieModal ? <MovieModal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
-            {orderModal ? <OrderModal cart={cart} toggleOrderModal={toggleOrderModal} /> : ""}
+            {orderModal ? <OrderModal cart={cart} toggleOrderModal={toggleOrderModal}
+                orderId={orderId} userData={userData} /> : ""}
+
             <main className="main-content">
                 <section className="movie-box">
                     {movies}
