@@ -1,7 +1,7 @@
 # React Movie Story
 Movie webshop built with React, TypeScript and Sass. 
 
-Live site url: [https://taskly-react-app.netlify.app/](https://react-movieshop.netlify.app/)
+Live site url: [https://react-movieshop.netlify.app](https://react-movieshop.netlify.app/)
 
 ## Installation
 1. Clone the repo\
