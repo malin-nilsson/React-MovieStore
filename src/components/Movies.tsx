@@ -40,6 +40,13 @@ export default function Movies(props: IMoviesProps) {
     const toggleModal = (item: IMovie) => {
         setMovieModal(movieModal => !movieModal);
         setProduct(item)
+
+    }
+
+    const clickOutsideModal = (e: any) => {
+        if (e.target.className.includes("modal-container")) {
+            setMovieModal(movieModal => !movieModal);
+        }
     }
 
     /////////////////////
@@ -119,9 +126,7 @@ export default function Movies(props: IMoviesProps) {
                     tempCart.splice(index, 1)
                     setCart(tempCart);
                 }
-
             }
-
         }
     }
 
@@ -159,7 +164,12 @@ export default function Movies(props: IMoviesProps) {
 
     return (
         <>
-            {movieModal ? <MovieModal toggleModal={toggleModal} addMovieFromModal={addMovieToCart} product={product} /> : ""}
+            {movieModal ? <MovieModal
+                clickOutsideModal={clickOutsideModal}
+                toggleModal={toggleModal}
+                addMovieFromModal={addMovieToCart}
+                product={product} />
+                : ""}
             {orderModal ? <OrderModal cart={cart} toggleOrderModal={toggleOrderModal}
                 orderId={orderId} userData={userData} /> : ""}
 

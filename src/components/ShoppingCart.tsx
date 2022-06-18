@@ -17,29 +17,30 @@ export default function ShoppingCart(props: ICartProps) {
 
     const [checkout, setCheckout] = useState(false);
 
-    /* Remove item */
+    // Remove item
     const removeItem = (id: number) => {
         let index = props.cart.findIndex((item) => item.productId === id);
-        props.removeFromCart(index)
+        props.removeFromCart(index);
     }
 
-    /* Increase item */
+    // Increase item
     const increaseItem = (id: number) => {
-        props.increaseQuantity(id)
+        props.increaseQuantity(id);
     }
 
     /* Decrease item */
     const decreaseItem = (id: number) => {
-        props.decreaseQuantity(id)
+        props.decreaseQuantity(id);
     }
 
-    /* Toggle checkout section */
+    // Toggle checkout section
     const toggleCheckout = () => {
         setCheckout(checkout => !checkout);
     }
 
+    // Place order
     const placeOrder = (userData: { name: string; email: string; payment: string; }, orderId: string) => {
-        props.confirmOrder(props.cart, userData, orderId)
+        props.confirmOrder(props.cart, userData, orderId);
     }
 
     if (props.cart.length !== 0) {
@@ -64,7 +65,7 @@ export default function ShoppingCart(props: ICartProps) {
 
                                             { /* Decrease item in cart */}
                                             <div className="icon">
-                                                <button className="btn-quanitity"
+                                                <button className="btn-quantity"
                                                     onClick={() => {
                                                         decreaseItem(item.productId);
                                                     }}>
@@ -77,7 +78,7 @@ export default function ShoppingCart(props: ICartProps) {
 
                                             { /* Increase item in cart */}
                                             <div className="icon">
-                                                <button className="btn-quanitity"
+                                                <button className="btn-quantity"
                                                     onClick={() => {
                                                         increaseItem(item.productId);
                                                     }}>
@@ -109,8 +110,9 @@ export default function ShoppingCart(props: ICartProps) {
                         </div>
                     </div>
                 </div>
-
-                {checkout ? <Checkout placeOrder={placeOrder} toggleCheckout={toggleCheckout} /> : ""}
+                {checkout ?
+                    <Checkout placeOrder={placeOrder} toggleCheckout={toggleCheckout} />
+                    : ""}
             </section>
         </>
     } else {
@@ -120,8 +122,7 @@ export default function ShoppingCart(props: ICartProps) {
                     <h2>Cart is empty</h2>
                 </div>
             </section>
-
         )
-    }
-}
+    };
+};
 

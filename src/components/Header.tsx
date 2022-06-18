@@ -21,14 +21,16 @@ export default function Header(props: IHeaderProps) {
         axios.get(url)
             .then((response) => {
                 setCategory(response.data)
-            })
-    })
+            });
+    });
 
+    // Search movie title
     const searchTitle = () => {
         props.movieSearch(input)
         setInput("");
     }
 
+    // Get category that user selected
     const getCategory = (value: string) => {
         setSelect(value)
         let categoryId = parseInt(value);
@@ -78,7 +80,6 @@ export default function Header(props: IHeaderProps) {
             </button>
         </div>
     )
-
 
     return (
         <>

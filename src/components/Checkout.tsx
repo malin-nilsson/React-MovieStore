@@ -19,7 +19,6 @@ export default function Checkout(props: ICheckoutProps) {
             ...data,
             [e.target.name]: value
         });
-        console.log(data)
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +29,6 @@ export default function Checkout(props: ICheckoutProps) {
             payment: data.payment
         };
 
-
         axios.post("https://medieinstitutet-wie-products.azurewebsites.net/api/orders", userData).then((response) => {
             let orderId = response.data.id.toString();
             placeOrder(userData, orderId)
@@ -38,13 +36,10 @@ export default function Checkout(props: ICheckoutProps) {
 
     };
 
-
     const placeOrder = (userData: { name: string; email: string; payment: string; }, orderId: string) => {
         props.placeOrder(userData, orderId);
         props.toggleCheckout();
     }
-
-
 
     const checkoutHTML = (
         <form onSubmit={handleSubmit} className="checkout-form">
@@ -74,7 +69,6 @@ export default function Checkout(props: ICheckoutProps) {
         </form>
     );
 
-
     return (
         <section className="checkout-box">
             <div className="checkout-content">
@@ -83,5 +77,5 @@ export default function Checkout(props: ICheckoutProps) {
             </div>
         </section>
 
-    )
-}
+    );
+};

@@ -34,7 +34,7 @@ export default function MovieStore() {
         return loaderHTML
     }
 
-    // Work in progress - filter based on search 
+    // Filter movies based on search 
     const searchResults = (input: string) => {
         if (input === "") {
             setFilteredResults(results)
@@ -50,7 +50,7 @@ export default function MovieStore() {
         }
     }
 
-    /* Filter based on category */
+    // Filter movies based on category
     const displayCategory = (categoryId: number) => {
         if (categoryId === 1) {
             setFilteredResults(results)

@@ -18,7 +18,7 @@ export default function OrderModal(props: IOrderModalProps) {
         return a + b.productPrice * b.productAmount
     }, 0);
 
-    const order = props.cart.map((item, i) => {
+    const order = props.cart.map((item) => {
         return (
 
             <div key={item.productId} className="order">
