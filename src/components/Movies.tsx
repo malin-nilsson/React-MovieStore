@@ -40,7 +40,6 @@ export default function Movies(props: IMoviesProps) {
     const toggleModal = (item: IMovie) => {
         setMovieModal(movieModal => !movieModal);
         setProduct(item)
-
     }
 
     const clickOutsideModal = (e: any) => {
@@ -73,7 +72,7 @@ export default function Movies(props: IMoviesProps) {
     })
 
     ////////////////////////////////
-    /* Add movie to shopping cart */
+    // Add movie to shopping cart //
     ////////////////////////////////
     const addMovieToCart = (movie: IMovie) => {
         let movieAlreadyInCart = false;
@@ -100,7 +99,7 @@ export default function Movies(props: IMoviesProps) {
     }
 
     ////////////////////////////////////
-    /* Increase item in shopping cart */
+    // Increase item in shopping cart //
     ////////////////////////////////////
     const increaseQuantity = (id: number) => {
         let tempCart = [...cart];
@@ -113,7 +112,7 @@ export default function Movies(props: IMoviesProps) {
     }
 
     ////////////////////////////////////
-    /* Decrease item in shopping cart */
+    // Decrease item in shopping cart //
     ////////////////////////////////////
     const decreaseQuantity = (id: number) => {
         let tempCart = [...cart];
@@ -131,14 +130,14 @@ export default function Movies(props: IMoviesProps) {
     }
 
     ////////////////////
-    /* Get total sum */
+    // Get total sum //
     ///////////////////
     const sum = cart.reduce(function (a, b) {
         return a + b.productPrice * b.productAmount
     }, 0);
 
     ////////////////////////////////////
-    /* Remove item from shopping cart */
+    // Remove item from shopping cart //
     ////////////////////////////////////
     const removeItem = (id: number) => {
         let tempCart = [...cart];
@@ -146,9 +145,9 @@ export default function Movies(props: IMoviesProps) {
         setCart(tempCart)
     }
 
-    ////////////////////////////////////
-    /* Show popup with order confirmation */
-    ////////////////////////////////////
+    ////////////////////////////////////////
+    // Show popup with order confirmation //
+    ///////////////////////////////////////
     const confirmOrder = (cart: ICart[], userData: { name: string; email: string; payment: string; }, orderId: string) => {
         setOrderModal(true)
         setOrderId(orderId);
