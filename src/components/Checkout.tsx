@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { IFormError } from '../models/IFormError';
 
 interface ICheckoutProps {
     placeOrder: (userData: { name: string; email: string; payment: string; }, orderId: string) => void;
@@ -11,6 +12,14 @@ export default function Checkout(props: ICheckoutProps) {
         name: "",
         email: "",
         payment: ""
+    });
+    const [errors, setErrors] = useState<IFormError>({
+        nameRequired: false,
+        nameRequiredMessage: "",
+        paymentRequired: false,
+        paymentRequiredMessage: "",
+        emailRequired: false,
+        emailRequiredMessage: "",
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,27 +38,62 @@ export default function Checkout(props: ICheckoutProps) {
             payment: data.payment
         };
 
-        axios.post("https://medieinstitutet-wie-products.azurewebsites.net/api/orders", userData).then((response) => {
-            let orderId = response.data.id.toString();
-            placeOrder(userData, orderId)
-        });
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+        // Validate
+        if (data.name.length === 0) {
+            setErrors({
+                ...errors,
+                nameRequired: true,
+                nameRequiredMessage: "Please enter your name.",
+            });
+        } else if (data.email.length === 0 || !re.test(data.email)) {
+            setErrors({
+                ...errors,
+                emailRequired: true,
+                emailRequiredMessage: "Please enter a valid e-mail address.",
+            });
+        } else if (data.payment === "") {
+            setErrors({
+                ...errors,
+                paymentRequired: true,
+                paymentRequiredMessage: "Please choose a payment method.",
+            });
+        }
+        else {
+            setErrors({
+                ...errors,
+                nameRequired: false,
+                emailRequired: false,
+                paymentRequired: false,
+            });
+            placeOrder(userData)
+        }
     };
 
-    const placeOrder = (userData: { name: string; email: string; payment: string; }, orderId: string) => {
-        props.placeOrder(userData, orderId);
-        props.toggleCheckout();
+    const placeOrder = (userData: { name: string; email: string; payment: string; }) => {
+        axios.post("https://medieinstitutet-wie-products.azurewebsites.net/api/orders", userData).then((response) => {
+            let orderId = response.data.id.toString();
+            props.placeOrder(userData, orderId);
+            props.toggleCheckout();
+        });
     }
 
     const checkoutHTML = (
-        <form onSubmit={handleSubmit} className="checkout-form">
+        <form onSubmit={handleSubmit} className="checkout-form" noValidate>
             <div className="input-group">
                 <span>Name</span>
                 <input type="text" name="name" placeholder="Name" onChange={((e) => { handleChange(e) })} />
+                {errors.nameRequired && (
+                    <div className="error">{errors.nameRequiredMessage}</div>
+                )}
             </div>
             <div className="input-group">
                 <span>E-mail</span>
                 <input type="email" name="email" placeholder="Email" onChange={((e) => { handleChange(e) })} />
+                {errors.emailRequired && (
+                    <div className="error">{errors.emailRequiredMessage}</div>
+                )}
             </div>
             <div className="input-group">
                 <span>Payment method</span>
@@ -64,6 +108,9 @@ export default function Checkout(props: ICheckoutProps) {
                         <label>Credit card</label>
                     </div>
                 </div>
+                {errors.paymentRequired && (
+                    <div className="error">{errors.paymentRequiredMessage}</div>
+                )}
             </div>
             <button type="submit">Place order</button>
         </form>
