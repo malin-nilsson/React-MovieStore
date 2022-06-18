@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# React Movie Story
+Movie webshop built with React, TypeScript and Sass. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live site url: [https://taskly-react-app.netlify.app/](https://react-movieshop.netlify.app/)
+
+## Installation
+1. Clone the repo\
+`git clone https://github.com/malin-nilsson/React-MovieStore`
+
+2. Install npm packages\
+`npm install`
+
+3. Run React\
+`npm start`
+
+## Author
+- GitHub - [malin-nilsson](https://github.com/malin-nilsson)
 
 ## Available Scripts
 
