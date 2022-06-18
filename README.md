@@ -1,4 +1,4 @@
-# React Movie Story
+# React Movie Store
 Movie webshop built with React, TypeScript and Sass. 
 
 Live site url: [https://react-movieshop.netlify.app](https://react-movieshop.netlify.app/)
