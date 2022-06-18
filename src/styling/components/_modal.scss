@@ -170,7 +170,6 @@
     .order-content {
         @include mixins.flex(column, center, flex-start, 20px);
         color: #fff;
-        width: 100%;
         padding: 0px 40px 20px;
 
         p {
