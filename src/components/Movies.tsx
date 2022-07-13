@@ -7,7 +7,7 @@ import ShoppingCart from './ShoppingCart';
 
 interface IMoviesProps {
     movies: IMovie[]
-    placeholder: string;
+    placeholder: boolean;
 }
 
 export default function Movies(props: IMoviesProps) {
@@ -161,6 +161,8 @@ export default function Movies(props: IMoviesProps) {
         setCart(tempCart)
     }
 
+    const noResultsMessage = "Sorry, we couldn't find any results";
+
     return (
         <>
             {movieModal ? <MovieModal
@@ -175,7 +177,7 @@ export default function Movies(props: IMoviesProps) {
             <main className="main-content">
                 <section className="movie-box">
                     {movies}
-                    <h4> {props.placeholder}</h4>
+                    {props.placeholder && (<h4>{noResultsMessage}</h4>)}
                 </section>
                 <ShoppingCart cart={cart} sum={sum}
                     removeFromCart={removeItem}

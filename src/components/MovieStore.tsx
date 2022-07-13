@@ -1,24 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IMovie } from "../models/IMovie";
+import Footer from "./Footer";
 import Header from "./Header";
 import Movies from "./Movies";
 
-const productsAPI = "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
+const moviesAPI = "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
 
 export default function MovieStore() {
     const [results, setResults] = useState<IMovie[]>([]);
     const [filteredResults, setFilteredResults] = useState<IMovie[]>([]);
     const [loader, setLoader] = useState(true);
-    const [placeholder, setPlaceholder] = useState("");
+    const [placeholder, setPlaceholder] = useState(false);
 
     useEffect(() => {
         if (results.length !== 0) return;
-        axios.get(productsAPI)
+        axios.get(moviesAPI)
             .then((response) => {
                 response.data.splice(-4, 4);
                 setResults(response.data);
-                setFilteredResults(response.data)
+                setFilteredResults(response.data);
                 setLoader(false)
             })
     });
@@ -38,13 +39,15 @@ export default function MovieStore() {
     const searchResults = (input: string) => {
         if (input === "") {
             setFilteredResults(results)
+            setPlaceholder(false)
         } else {
-            axios.get('https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=' + input)
+            axios.get("https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=" + input)
                 .then((response) => {
-                    setFilteredResults(response.data)
-
+                    setFilteredResults(response.data);
+                    setPlaceholder(false);
                     if (filteredResults.length === 0) {
-                        setPlaceholder("Sorry, we couldn't find any results.")
+                        setPlaceholder(true);
+
                     }
                 })
         }
@@ -65,6 +68,7 @@ export default function MovieStore() {
             <Header movieSearch={searchResults} movies={results}
                 getCategory={displayCategory} />
             <Movies movies={filteredResults} placeholder={placeholder} />
+            <Footer />
         </>
     )
 }

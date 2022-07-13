@@ -9,7 +9,7 @@ interface IHeaderProps {
     movies: IMovie[];
 }
 
-const url = "https://medieinstitutet-wie-products.azurewebsites.net/api/categories";
+const categoryAPI = "https://medieinstitutet-wie-products.azurewebsites.net/api/categories";
 
 export default function Header(props: IHeaderProps) {
     const [input, setInput] = useState("");
@@ -18,7 +18,7 @@ export default function Header(props: IHeaderProps) {
 
     useEffect(() => {
         if (category.length !== 0) return;
-        axios.get(url)
+        axios.get(categoryAPI)
             .then((response) => {
                 setCategory(response.data)
             });
