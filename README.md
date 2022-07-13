@@ -1,5 +1,5 @@
 # React Movie Store
-Movie webshop built with React, TypeScript and Sass. 
+Movie webshop built with React, TypeScript and Sass, using movie API from Medieinstitutet.
 
 Live site url: [https://react-movieshop.netlify.app](https://react-movieshop.netlify.app/)
 
