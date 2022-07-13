@@ -1,6 +1,22 @@
-# Getting Started with Create React App
+# React Movie Store
+Movie webshop built with React, TypeScript and Sass, using movie API from Medieinstitutet. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Users can search for movie titles, filter by category, add/remove items from the cart and checkout.
+
+Live site url: [https://react-movieshop.netlify.app](https://react-movieshop.netlify.app/)
+
+## Installation
+1. Clone the repo\
+`git clone https://github.com/malin-nilsson/React-MovieStore`
+
+2. Install npm packages\
+`npm install`
+
+3. Run React\
+`npm start`
+
+## Author
+- GitHub - [malin-nilsson](https://github.com/malin-nilsson)
 
 ## Available Scripts
 
